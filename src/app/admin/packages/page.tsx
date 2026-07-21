@@ -98,7 +98,7 @@ export default function AdminPackages() {
           <tbody>
             {items.map(p => (
               <tr key={p._id} className="border-t dark:border-slate-800">
-                <td className="p-3"><div className="flex items-center gap-3"><div className="relative h-10 w-14 overflow-hidden rounded-lg">{(p.thumbnail || p.images?.[0]) && <SafeImage src={p.thumbnail || p.images[0]} alt="" fill className="object-cover" />}</div><div><div className="font-semibold text-slate-800 dark:text-white">{p.title}</div><div className="text-xs text-slate-400">{p.city}{p.city && p.country ? ', ' : ''}{p.country}</div></div></div></td>
+                <td className="p-3"><div className="flex items-center gap-3"><div className="relative h-10 w-14 overflow-hidden rounded-lg">{(p.thumbnail || p.images?.[0]) && <SafeImage src={p.thumbnail || p.images[0]} alt="" fill className="object-cover" />}</div><div><div className="font-semibold text-black">{p.title}</div><div className="text-xs text-slate-400">{p.city}{p.city && p.country ? ', ' : ''}{p.country}</div></div></div></td>
                 <td className="p-3 text-slate-500">{p.category?.name || p.categorySlug}</td>
                 <td className="p-3">
                   <div className="font-semibold">₹{p.price?.toLocaleString('en-IN')}</div>

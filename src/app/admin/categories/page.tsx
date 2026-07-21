@@ -35,7 +35,7 @@ export default function AdminCategories() {
           <tbody>
             {items.map(c => (
               <tr key={c._id} className="border-t dark:border-slate-800">
-                <td className="p-3"><div className="flex items-center gap-3"><div className="relative h-10 w-14 overflow-hidden rounded-lg">{c.image && <SafeImage src={c.image} alt="" fill className="object-cover" />}</div><span className="font-semibold text-slate-800 dark:text-white">{c.name}</span></div></td>
+                <td className="p-3"><div className="flex items-center gap-3"><div className="relative h-10 w-14 overflow-hidden rounded-lg">{c.image && <SafeImage src={c.image} alt="" fill className="object-cover" />}</div><span className="font-semibold text-black">{c.name}</span></div></td>
                 <td className="p-3">{c.packageCount}</td>
                 <td className="p-3">₹{c.startingPrice?.toLocaleString('en-IN')}</td>
                 <td className="p-3">{c.displayOrder}</td>

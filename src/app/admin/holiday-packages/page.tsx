@@ -107,7 +107,7 @@ export default function AdminHolidayPackages() {
                   <td className="p-3">
                     <input
                       type="number" min="0"
-                      className="w-12 rounded-lg border border-slate-200 bg-white px-2 py-1 text-center text-xs font-bold outline-none focus:border-primary dark:border-slate-700 dark:bg-slate-800"
+                      className="w-12 rounded-lg border border-slate-200 bg-white px-2 py-1 text-center text-xs font-bold outline-none focus:border-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
                       value={p.displayOrder || 0}
                       onChange={e => updateOrder(p, +e.target.value)}
                     />
@@ -119,7 +119,7 @@ export default function AdminHolidayPackages() {
                         {(p.thumbnail || p.images?.[0]) && <SafeImage src={p.thumbnail || p.images[0]} alt="" fill className="object-cover" />}
                       </div>
                       <div>
-                        <div className="font-semibold text-slate-800 dark:text-white line-clamp-1">{p.title}</div>
+                        <div className="font-semibold text-black line-clamp-1">{p.title}</div>
                         <div className="text-xs text-slate-400">{p.destination?.name || p.city}{p.country ? `, ${p.country}` : ''}</div>
                       </div>
                     </div>
