@@ -4,6 +4,7 @@ import SafeImage from '@/components/SafeImage';
 import { Plus, Pencil, Trash2 } from 'lucide-react';
 import { api } from '@/lib/api';
 import AdminModal, { Field, inputCls, TabBar, ArrayField, ItineraryBuilder } from '@/components/admin/AdminModal';
+import { useAdminForm } from '@/hooks/useAdminForm';
 
 const blank: any = {
   title: '', slug: '', country: '', city: '', type: 'domestic',
@@ -27,9 +28,6 @@ export default function AdminPackages() {
   const [items, setItems] = useState<any[]>([]);
   const [cats, setCats] = useState<any[]>([]);
   const [dests, setDests] = useState<any[]>([]);
-  const [modal, setModal] = useState(false);
-  const [editing, setEditing] = useState<any>(null);
-  const [form, setForm] = useState<any>(blank);
   const [tab, setTab] = useState(0);
   const [imagesStr, setImagesStr] = useState('');
   const [galleryStr, setGalleryStr] = useState('');
@@ -38,11 +36,22 @@ export default function AdminPackages() {
   const load = () => api.get('/packages?limit=100').then(r => setItems(r.data.items));
   useEffect(() => { load(); api.get('/categories').then(r => setCats(r.data.items)); api.get('/destinations?limit=100').then(r => setDests(r.data.items)); }, []);
 
-  const openNew = () => { setEditing(null); setForm(blank); setImagesStr(''); setGalleryStr(''); setDatesStr(''); setTab(0); setModal(true); };
-  const openEdit = (p: any) => {
-    setEditing(p);
-    setForm({
-      ...blank, ...p,
+  const { modal, setModal, form, set, editing, openNew, openEdit, save, loading } = useAdminForm('/packages', blank, load);
+
+  const handleOpenNew = () => {
+    setImagesStr('');
+    setGalleryStr('');
+    setDatesStr('');
+    setTab(0);
+    openNew();
+  };
+
+  const handleOpenEdit = (p: any) => {
+    setImagesStr((p.images || []).join('\n'));
+    setGalleryStr((p.gallery || []).join('\n'));
+    setDatesStr((p.availableDates || []).map((d: string) => d.split('T')[0]).join(', '));
+    setTab(0);
+    openEdit(p, {
       seo: p.seo || blank.seo,
       destination: p.destination?._id || p.destination || '',
       highlights: p.highlights || [],
@@ -56,40 +65,35 @@ export default function AdminPackages() {
       images: p.images || [],
       availableDates: p.availableDates || []
     });
-    setImagesStr((p.images || []).join('\n'));
-    setGalleryStr((p.gallery || []).join('\n'));
-    setDatesStr((p.availableDates || []).map((d: string) => d.split('T')[0]).join(', '));
-    setTab(0);
-    setModal(true);
   };
-  const set = (k: string, v: any) => setForm((f: any) => ({ ...f, [k]: v }));
 
-  const save = async () => {
-    const payload = {
-      ...form,
-      slug: form.slug || slugify(form.title),
-      images: imagesStr.split('\n').map((s: string) => s.trim()).filter(Boolean),
-      gallery: galleryStr.split('\n').map((s: string) => s.trim()).filter(Boolean),
-      theme: Array.isArray(form.theme) ? form.theme : String(form.theme).split(',').map((s: string) => s.trim()).filter(Boolean),
-      tags: Array.isArray(form.tags) ? form.tags : String(form.tags).split(',').map((s: string) => s.trim()).filter(Boolean),
-      availableDates: datesStr.split(',').map((s: string) => s.trim()).filter(Boolean).map((s: string) => new Date(s)),
-      seo: {
-        ...form.seo,
-        keywords: Array.isArray(form.seo?.keywords) ? form.seo.keywords : String(form.seo?.keywords || '').split(',').map((s: string) => s.trim()).filter(Boolean)
-      }
-    };
-    if (!payload.destination) delete payload.destination;
-    if (editing) await api.put(`/packages/${editing._id}`, payload);
-    else await api.post('/packages', payload);
-    setModal(false); load();
+  const handleSave = () => {
+    save(f => {
+      const p: any = {
+        ...f,
+        slug: f.slug || slugify(f.title),
+        images: imagesStr.split('\n').map((s: string) => s.trim()).filter(Boolean),
+        gallery: galleryStr.split('\n').map((s: string) => s.trim()).filter(Boolean),
+        theme: Array.isArray(f.theme) ? f.theme : String(f.theme).split(',').map((s: string) => s.trim()).filter(Boolean),
+        tags: Array.isArray(f.tags) ? f.tags : String(f.tags).split(',').map((s: string) => s.trim()).filter(Boolean),
+        availableDates: datesStr.split(',').map((s: string) => s.trim()).filter(Boolean).map((s: string) => new Date(s)),
+        seo: {
+          ...f.seo,
+          keywords: Array.isArray(f.seo?.keywords) ? f.seo.keywords : String(f.seo?.keywords || '').split(',').map((s: string) => s.trim()).filter(Boolean)
+        }
+      };
+      if (!p.destination) delete p.destination;
+      return p;
+    });
   };
+
   const remove = async (id: string) => { if (confirm('Delete this package?')) { await api.delete(`/packages/${id}`); load(); } };
 
   const tabs = ['Basic Info', 'Content', 'Media', 'SEO & Tags', 'Settings'];
 
   return (
     <div>
-      <div className="mb-6 flex items-center justify-between"><h1 className="text-2xl font-extrabold text-slate-800 dark:text-white">Packages</h1><button onClick={openNew} className="btn-primary px-4 py-2 text-sm"><Plus size={16} /> Add Package</button></div>
+      <div className="mb-6 flex items-center justify-between"><h1 className="text-2xl font-extrabold text-slate-800 dark:text-white">Packages</h1><button onClick={handleOpenNew} className="btn-primary px-4 py-2 text-sm"><Plus size={16} /> Add Package</button></div>
       <div className="card overflow-x-auto">
         <table className="w-full min-w-[800px] text-sm">
           <thead className="bg-slate-50 text-left text-xs uppercase text-slate-500 dark:bg-slate-800">
@@ -114,7 +118,7 @@ export default function AdminPackages() {
                     {p.popular && <span className="rounded bg-secondary/20 px-1.5 py-0.5 text-[10px] font-semibold text-secondary">Popular</span>}
                   </div>
                 </td>
-                <td className="p-3"><div className="flex justify-end gap-2"><button onClick={() => openEdit(p)} className="rounded-lg p-2 text-primary hover:bg-primary/10"><Pencil size={15} /></button><button onClick={() => remove(p._id)} className="rounded-lg p-2 text-red-500 hover:bg-red-50"><Trash2 size={15} /></button></div></td>
+                <td className="p-3"><div className="flex justify-end gap-2"><button onClick={() => handleOpenEdit(p)} className="rounded-lg p-2 text-primary hover:bg-primary/10"><Pencil size={15} /></button><button onClick={() => remove(p._id)} className="rounded-lg p-2 text-red-500 hover:bg-red-50"><Trash2 size={15} /></button></div></td>
               </tr>
             ))}
           </tbody>
@@ -122,7 +126,7 @@ export default function AdminPackages() {
       </div>
 
       {modal && (
-        <AdminModal title={editing ? 'Edit Package' : 'New Package'} onClose={() => setModal(false)} onSubmit={save}>
+        <AdminModal title={editing ? 'Edit Package' : 'New Package'} onClose={() => setModal(false)} onSubmit={handleSave}>
           <TabBar tabs={tabs} active={tab} onChange={setTab} />
 
           {/* TAB 0: Basic Info */}

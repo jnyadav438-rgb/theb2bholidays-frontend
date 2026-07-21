@@ -4,26 +4,19 @@ import SafeImage from '@/components/SafeImage';
 import { Plus, Pencil, Trash2 } from 'lucide-react';
 import { api } from '@/lib/api';
 import AdminModal, { Field, inputCls } from '@/components/admin/AdminModal';
+import { useAdminForm } from '@/hooks/useAdminForm';
 
 const blank = { name: '', slug: '', image: '', description: '', startingPrice: 0, displayOrder: 0, featured: false };
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 export default function AdminCategories() {
   const [items, setItems] = useState<any[]>([]);
-  const [modal, setModal] = useState(false);
-  const [editing, setEditing] = useState<any>(null);
-  const [form, setForm] = useState<any>(blank);
-
   const load = () => api.get('/categories').then(r => setItems(r.data.items));
   useEffect(() => { load(); }, []);
-  const openNew = () => { setEditing(null); setForm(blank); setModal(true); };
-  const openEdit = (c: any) => { setEditing(c); setForm({ ...blank, ...c }); setModal(true); };
-  const set = (k: string, v: any) => setForm((f: any) => ({ ...f, [k]: v }));
-  const save = async () => {
-    const payload = { ...form, slug: form.slug || slugify(form.name) };
-    if (editing) await api.put(`/categories/${editing._id}`, payload); else await api.post('/categories', payload);
-    setModal(false); load();
-  };
+
+  const { modal, setModal, form, set, editing, openNew, openEdit, save, loading } = useAdminForm('/categories', blank, load);
+
+  const handleSave = () => save(f => ({ ...f, slug: f.slug || slugify(f.name) }));
   const remove = async (id: string) => { if (confirm('Delete this category?')) { await api.delete(`/categories/${id}`); load(); } };
 
   return (
@@ -46,7 +39,7 @@ export default function AdminCategories() {
         </table>
       </div>
       {modal && (
-        <AdminModal title={editing ? 'Edit Category' : 'New Category'} onClose={() => setModal(false)} onSubmit={save}>
+        <AdminModal title={editing ? 'Edit Category' : 'New Category'} onClose={() => setModal(false)} onSubmit={handleSave}>
           <div className="grid grid-cols-2 gap-3">
             <Field label="Name"><input required className={inputCls} value={form.name} onChange={e => set('name', e.target.value)} /></Field>
             <Field label="Slug (auto)"><input className={inputCls} value={form.slug} onChange={e => set('slug', e.target.value)} /></Field>

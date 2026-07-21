@@ -4,6 +4,7 @@ import SafeImage from '@/components/SafeImage';
 import { Plus, Pencil, Trash2, Star } from 'lucide-react';
 import { api } from '@/lib/api';
 import AdminModal, { Field, inputCls, TabBar, ArrayField, FAQBuilder, AttractionBuilder, WeatherBuilder } from '@/components/admin/AdminModal';
+import { useAdminForm } from '@/hooks/useAdminForm';
 
 const blank: any = {
   name: '', slug: '', country: '', state: '', type: 'domestic',
@@ -19,50 +20,41 @@ const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').repla
 
 export default function AdminDestinations() {
   const [items, setItems] = useState<any[]>([]);
-  const [modal, setModal] = useState(false);
-  const [editing, setEditing] = useState<any>(null);
-  const [form, setForm] = useState<any>(blank);
   const [tab, setTab] = useState(0);
   const [galleryStr, setGalleryStr] = useState('');
 
   const load = () => api.get('/destinations?limit=100').then(r => setItems(r.data.items));
   useEffect(() => { load(); }, []);
 
-  const openNew = () => { setEditing(null); setForm(blank); setGalleryStr(''); setTab(0); setModal(true); };
-  const openEdit = (d: any) => {
-    setEditing(d);
-    setForm({
-      ...blank, ...d,
-      gallery: d.gallery || [],
-      weather: d.weather || [],
-      topAttractions: d.topAttractions || [],
-      thingsToDo: d.thingsToDo || [],
-      travelTips: d.travelTips || [],
-      faqs: d.faqs || []
-    });
+  const { modal, setModal, form, set, editing, openNew, openEdit, save, loading } = useAdminForm('/destinations', blank, load);
+
+  const handleOpenNew = () => {
+    setGalleryStr('');
+    setTab(0);
+    openNew();
+  };
+
+  const handleOpenEdit = (d: any) => {
     setGalleryStr((d.gallery || []).join('\n'));
     setTab(0);
-    setModal(true);
+    openEdit(d);
   };
-  const set = (k: string, v: any) => setForm((f: any) => ({ ...f, [k]: v }));
 
-  const save = async () => {
-    const payload = {
-      ...form,
-      slug: form.slug || slugify(form.name),
-      gallery: galleryStr.split('\n').map((s: string) => s.trim()).filter(Boolean)
-    };
-    if (editing) await api.put(`/destinations/${editing._id}`, payload);
-    else await api.post('/destinations', payload);
-    setModal(false); load();
+  const handleSave = () => {
+    save(f => ({
+      ...f,
+      slug: f.slug || slugify(f.name),
+      gallery: galleryStr.split('\n').map(s => s.trim()).filter(Boolean)
+    }));
   };
+
   const remove = async (id: string) => { if (confirm('Delete this destination?')) { await api.delete(`/destinations/${id}`); load(); } };
 
   const tabs = ['Basic Info', 'Content', 'Media', 'Settings'];
 
   return (
     <div>
-      <div className="mb-6 flex items-center justify-between"><h1 className="text-2xl font-extrabold text-slate-800 dark:text-white">Destinations</h1><button onClick={openNew} className="btn-primary px-4 py-2 text-sm"><Plus size={16} /> Add Destination</button></div>
+      <div className="mb-6 flex items-center justify-between"><h1 className="text-2xl font-extrabold text-slate-800 dark:text-white">Destinations</h1><button onClick={handleOpenNew} className="btn-primary px-4 py-2 text-sm"><Plus size={16} /> Add Destination</button></div>
       <div className="card overflow-hidden">
         <table className="w-full text-sm">
           <thead className="bg-slate-50 text-left text-xs uppercase text-slate-500 dark:bg-slate-800"><tr><th className="p-3">Destination</th><th className="p-3">Country</th><th className="p-3">Tours</th><th className="p-3">From</th><th className="p-3">Rating</th><th className="p-3">Flags</th><th className="p-3 text-right">Actions</th></tr></thead>
@@ -75,7 +67,7 @@ export default function AdminDestinations() {
                 <td className="p-3">₹{d.startingPrice?.toLocaleString('en-IN')}</td>
                 <td className="p-3"><div className="flex items-center gap-1"><Star size={13} className="fill-amber-400 text-amber-400" /><span className="text-xs font-semibold">{d.rating}</span></div></td>
                 <td className="p-3"><div className="flex gap-1">{d.featured && <span className="rounded bg-accent/20 px-1.5 py-0.5 text-[10px] font-semibold text-amber-700">Featured</span>}{d.popular && <span className="rounded bg-secondary/20 px-1.5 py-0.5 text-[10px] font-semibold text-secondary">Popular</span>}</div></td>
-                <td className="p-3"><div className="flex justify-end gap-2"><button onClick={() => openEdit(d)} className="rounded-lg p-2 text-primary hover:bg-primary/10"><Pencil size={15} /></button><button onClick={() => remove(d._id)} className="rounded-lg p-2 text-red-500 hover:bg-red-50"><Trash2 size={15} /></button></div></td>
+                <td className="p-3"><div className="flex justify-end gap-2"><button onClick={() => handleOpenEdit(d)} className="rounded-lg p-2 text-primary hover:bg-primary/10"><Pencil size={15} /></button><button onClick={() => remove(d._id)} className="rounded-lg p-2 text-red-500 hover:bg-red-50"><Trash2 size={15} /></button></div></td>
               </tr>
             ))}
           </tbody>
@@ -83,7 +75,7 @@ export default function AdminDestinations() {
       </div>
 
       {modal && (
-        <AdminModal title={editing ? 'Edit Destination' : 'New Destination'} onClose={() => setModal(false)} onSubmit={save}>
+        <AdminModal title={editing ? 'Edit Destination' : 'New Destination'} onClose={() => setModal(false)} onSubmit={handleSave}>
           <TabBar tabs={tabs} active={tab} onChange={setTab} />
 
           {/* TAB 0: Basic Info */}
