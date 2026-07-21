@@ -69,7 +69,7 @@ export default function AdminDestinations() {
           <tbody>
             {items.map(d => (
               <tr key={d._id} className="border-t dark:border-slate-800">
-                <td className="p-3"><div className="flex items-center gap-3"><div className="relative h-10 w-14 overflow-hidden rounded-lg">{d.image && <SafeImage src={d.image} alt="" fill className="object-cover" />}</div><span className="font-semibold text-slate-800 dark:text-white">{d.name}</span></div></td>
+                <td className="p-3"><div className="flex items-center gap-3"><div className="relative h-10 w-14 overflow-hidden rounded-lg">{d.image && <SafeImage src={d.image} alt="" fill className="object-cover" />}</div><span className="font-semibold text-black">{d.name}</span></div></td>
                 <td className="p-3 text-slate-500">{d.country}</td>
                 <td className="p-3">{d.tourCount}</td>
                 <td className="p-3">₹{d.startingPrice?.toLocaleString('en-IN')}</td>

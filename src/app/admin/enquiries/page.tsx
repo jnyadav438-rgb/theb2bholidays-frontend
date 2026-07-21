@@ -41,12 +41,12 @@ export default function AdminEnquiries() {
             placeholder="Search name, email, phone..." 
             value={search} 
             onChange={(e) => setSearch(e.target.value)}
-            className="rounded-xl border px-3 py-2 text-sm outline-none focus:border-primary dark:bg-slate-800 dark:border-slate-700"
+            className="rounded-xl border px-3 py-2 text-sm outline-none focus:border-primary dark:bg-slate-800 dark:border-slate-700 dark:text-white"
           />
           <select 
             value={status} 
             onChange={(e) => setStatus(e.target.value)}
-            className="rounded-xl border px-3 py-2 text-sm outline-none focus:border-primary dark:bg-slate-800 dark:border-slate-700"
+            className="rounded-xl border px-3 py-2 text-sm outline-none focus:border-primary dark:bg-slate-800 dark:border-slate-700 dark:text-white"
           >
             <option value="">All Statuses</option>
             <option value="New">New</option>
@@ -78,7 +78,7 @@ export default function AdminEnquiries() {
                 {enquiries.map((e) => (
                   <tr key={e._id} className="hover:bg-slate-50 dark:hover:bg-slate-800/50">
                     <td className="px-4 py-3">
-                      <div className="font-bold text-slate-800 dark:text-white">{e.name}</div>
+                      <div className="font-bold text-black">{e.name}</div>
                       <div className="text-slate-500">{e.email}</div>
                       <div className="text-slate-500">{e.phone}</div>
                     </td>
