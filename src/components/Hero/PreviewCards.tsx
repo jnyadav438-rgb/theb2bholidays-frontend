@@ -8,7 +8,7 @@ import { getDestinationImage } from '@/lib/imageResolver';
 const premiumDestinations = [
   { name: 'Bali', slug: 'bali', image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80' },
   { name: 'Vietnam', slug: 'vietnam', image: 'https://images.unsplash.com/photo-1528127269322-539801943592?w=600&q=80' },
-  { name: 'Bhutan', slug: 'bhutan', image: 'https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?w=600&q=80' },
+  { name: 'Bhutan', slug: 'bhutan', image: 'https://images.unsplash.com/photo-1638246438556-5d5042582f05?w=600&q=80' },
   { name: 'Nepal', slug: 'nepal', image: 'https://images.unsplash.com/photo-1581793746485-04698e79a4e8?w=600&q=80' },
   { name: 'Kashmir', slug: 'kashmir', image: 'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=600&q=80' },
   { name: 'Goa', slug: 'goa', image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&q=80' },
