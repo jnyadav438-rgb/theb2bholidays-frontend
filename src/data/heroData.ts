@@ -18,7 +18,7 @@ export const heroData = [
     location: "Bhutan",
     title: "Journey to the Last Shangri-La",
     subtitle: "Discover majestic fortresses, serene monasteries, and the breathtaking beauty of the Himalayas.",
-    image: "https://images.unsplash.com/photo-1627896157734-4d7d4388f28b?q=80&w=2000&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?q=80&w=2000&auto=format&fit=crop"
   },
   {
     id: 4,
@@ -46,13 +46,13 @@ export const heroData = [
     location: "Gujarat",
     title: "The Land of Legends",
     subtitle: "Discover rich heritage, vibrant festivals, and the majestic Asiatic lions in their natural habitat.",
-    image: "https://images.unsplash.com/photo-1600100397608-f010f419c9ba?q=80&w=2000&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?q=80&w=2000&auto=format&fit=crop"
   },
   {
     id: 8,
     location: "Himachal Pradesh",
     title: "Embrace Alpine Perfection",
     subtitle: "Journey through pristine snow-covered valleys, picturesque hill stations, and charming mountain villages.",
-    image: "https://images.unsplash.com/photo-1605649487212-4d5dc29590e8?q=80&w=2000&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=2000&auto=format&fit=crop"
   }
 ];
