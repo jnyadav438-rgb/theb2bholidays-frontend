@@ -29,30 +29,30 @@ export const heroData = [
   },
   {
     id: 5,
+    location: "Golden Triangle",
+    title: "Explore Incredible India",
+    subtitle: "Experience the ultimate cultural journey through Delhi, Agra, and Jaipur.",
+    image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=2000&auto=format&fit=crop"
+  },
+  {
+    id: 6,
     location: "Rajasthan",
     title: "Step into Royal Grandeur",
     subtitle: "Wander through majestic forts, opulent palaces, and golden deserts that echo with ancient legends.",
     image: "https://images.unsplash.com/photo-1477587458883-47145ed94245?q=80&w=2000&auto=format&fit=crop"
   },
   {
-    id: 6,
-    location: "Kashmir",
-    title: "Experience Paradise on Earth",
-    subtitle: "Glide through the serene Dal Lake on a Shikara and witness the snow-capped majesty of the Himalayas.",
-    image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?q=80&w=2000&auto=format&fit=crop"
-  },
-  {
     id: 7,
-    location: "Goa",
-    title: "Escape to Coastal Bliss",
-    subtitle: "Relax on sun-kissed golden beaches, explore rich heritage, and dive into vibrant tropical nightlife.",
-    image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=2000&auto=format&fit=crop"
+    location: "Gujarat",
+    title: "The Land of Legends",
+    subtitle: "Discover rich heritage, vibrant festivals, and the majestic Asiatic lions in their natural habitat.",
+    image: "https://images.unsplash.com/photo-1601053153671-893d56711822?q=80&w=2000&auto=format&fit=crop"
   },
   {
     id: 8,
-    location: "Ladakh",
-    title: "The Land of High Passes",
-    subtitle: "Experience raw adventure amidst barren mountains, high altitude lakes and ancient Buddhist monasteries.",
-    image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=2000&auto=format&fit=crop"
+    location: "Himachal Pradesh",
+    title: "Embrace Alpine Perfection",
+    subtitle: "Journey through pristine snow-covered valleys, picturesque hill stations, and charming mountain villages.",
+    image: "https://images.unsplash.com/photo-1596706917637-2fb0fae53466?q=80&w=2000&auto=format&fit=crop"
   }
 ];
