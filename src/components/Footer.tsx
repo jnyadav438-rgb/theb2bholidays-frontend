@@ -36,7 +36,12 @@ export default function Footer() {
           <ul className="space-y-3 text-sm text-white/70">
             <li className="flex items-center gap-2"><Mail size={16} /> info@theb2bholidays.com</li>
             <li className="flex items-center gap-2"><Phone size={16} /> +91 97165 51594</li>
-            <li className="flex items-center gap-2"><MapPin size={16} /> New Delhi, India</li>
+            <li className="flex items-start gap-2">
+              <MapPin size={16} className="mt-0.5 shrink-0" />
+              <a href="https://maps.google.com/?q=41,+Block+A,+Industrial+Area,+Sector+62,+Noida,+Uttar+Pradesh+201309" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+                C 22 & 23, 5th Floor, The Iconic Corenthum, opposite Electronic City Metro Station Road, Block A, Sector 62, Noida, Uttar Pradesh 201309
+              </a>
+            </li>
           </ul>
         </div>
       </div>
