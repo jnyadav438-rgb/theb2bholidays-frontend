@@ -3,7 +3,7 @@ import Link from 'next/link';
 import SafeImage from '@/components/SafeImage';
 import { motion } from 'framer-motion';
 import { Heart, Star, Flame, Palmtree, Navigation } from 'lucide-react';
-import { resolveImage } from '@/lib/imageResolver';
+import { getPackageImage } from '@/lib/imageResolver';
 
 interface PackageProps {
   slug: string;
@@ -42,7 +42,7 @@ export default function MasonryPackageCard({ pkg, index }: { pkg: PackageProps; 
       >
         {/* Background Image */}
         <SafeImage 
-          src={resolveImage('package', pkg.slug || pkg.title, pkg.thumbnail || pkg.coverImage || pkg.images?.[0])} 
+          src={getPackageImage(pkg)} 
           alt={pkg.title}  
           fill 
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"

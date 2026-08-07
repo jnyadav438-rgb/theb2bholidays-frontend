@@ -5,6 +5,7 @@ const DESTINATION_IMAGES: Record<string, string> = {
   shimla: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80',
   darjeeling: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=800&q=80',
   sikkim: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80',
+  focus: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80',
   ladakh: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80',
   rajasthan: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?w=800&q=80',
   jaipur: 'https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?w=800&q=80',
@@ -29,6 +30,19 @@ const DESTINATION_IMAGES: Record<string, string> = {
   paris: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800&q=80',
   london: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=800&q=80',
   "new york": 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&q=80',
+  "golden triangle": 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80',
+  "gujarat": 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800&q=80',
+  "himachal pradesh": 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80',
+  "pilgrim package": 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=800&q=80',
+  "madhya pradesh": 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80',
+  "meghalaya assam": 'https://images.unsplash.com/photo-1579761922573-04bcf7f1e72f?w=800&q=80',
+  "arunachal pradesh": 'https://images.unsplash.com/photo-1622037198442-1264c1c9c054?w=800&q=80',
+  "coorg mysore": 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80',
+  "odisha": 'https://images.unsplash.com/photo-1634568856111-9f94eb9725f7?w=800&q=80',
+  "uttarakhand": 'https://images.unsplash.com/photo-1610416955097-bf0e54d5d3ff?w=800&q=80',
+  "hyderabad": 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80',
+  "maharashtra": 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=800&q=80',
+  "west bengal": 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?w=800&q=80',
 };
 
 const CATEGORY_IMAGES: Record<string, string> = {
@@ -45,11 +59,24 @@ const CATEGORY_IMAGES: Record<string, string> = {
 
 const GENERIC_TRAVEL = 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80';
 
+// Helper to determine if a URL is one of the generic placeholder images
+const isGenericPlaceholder = (url?: string | null): boolean => {
+  if (!url) return true;
+  return url.includes('photo-1488646953014-85cb44e25828') || 
+         url.includes('photo-1524492412937-b28074a5d7da') || 
+         url.includes('photo-1476514525535-07fb3b4ae5f1');
+};
+
 export function resolveImage(
   type: 'destination' | 'package' | 'category',
   identifier: string,
   fallback?: string
 ): string {
+  // If we have a valid, specific database image fallback, we ALWAYS prefer it over the static maps
+  if (fallback && fallback.startsWith('http') && !isGenericPlaceholder(fallback)) {
+    return fallback;
+  }
+
   if (!identifier) return fallback || GENERIC_TRAVEL;
 
   const searchStr = identifier.toLowerCase();
@@ -129,11 +156,42 @@ export function resolveGallery(identifier: string, fallback?: string[]): string[
     }
   }
 
-  // Fallback to generating a gallery using the single image mapping if a specific gallery isn't defined
   const singleImage = resolveImage('destination', identifier);
   if (singleImage !== GENERIC_TRAVEL) {
     return [singleImage, singleImage, singleImage, singleImage, singleImage];
   }
 
   return fallback || [GENERIC_TRAVEL];
+}
+
+// Reusable centralized functions for components to consistently fetch images
+export function buildUnsplashQuery(item: { name?: string; title?: string; destination?: any; country?: string; category?: any }): string {
+  const parts: string[] = [];
+  if (item.name) parts.push(item.name);
+  if (item.title) parts.push(item.title);
+  if (item.destination) {
+    if (typeof item.destination === 'string') parts.push(item.destination);
+    else if (item.destination.name) parts.push(item.destination.name);
+  }
+  if (item.country) parts.push(item.country);
+  if (item.category) {
+    if (typeof item.category === 'string') parts.push(item.category);
+    else if (item.category.name) parts.push(item.category.name);
+  }
+  return parts.filter(Boolean).join(" ");
+}
+
+export function getDestinationImage(dest: any): string {
+  if (!dest) return GENERIC_TRAVEL;
+  return resolveImage('destination', dest.slug || dest.name, dest.image);
+}
+
+export function getPackageImage(pkg: any): string {
+  if (!pkg) return GENERIC_TRAVEL;
+  return resolveImage('package', pkg.slug || pkg.title, pkg.thumbnail || pkg.coverImage || pkg.images?.[0]);
+}
+
+export function getCategoryImage(cat: any): string {
+  if (!cat) return GENERIC_TRAVEL;
+  return resolveImage('category', cat.slug || cat.name, cat.image);
 }

@@ -3,17 +3,17 @@ import { motion } from 'framer-motion';
 import SafeImage from '@/components/SafeImage';
 import Link from 'next/link';
 import { MapPin } from 'lucide-react';
-import { resolveImage } from '@/lib/imageResolver';
+import { getDestinationImage } from '@/lib/imageResolver';
 
 const premiumDestinations = [
-  { name: 'Kashmir', img: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&q=80' },
-  { name: 'Goa', img: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80' },
-  { name: 'Meghalaya', img: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80' },
-  { name: 'Ladakh', img: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80' },
-  { name: 'Bali', img: 'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=600&q=80' },
-  { name: 'Dubai', img: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=600&q=80' },
-  { name: 'Thailand', img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&q=80' },
-  { name: 'Maldives', img: 'https://images.unsplash.com/photo-1433083866827-44b205312f2a?w=600&q=80' }
+  { name: 'Kashmir', slug: 'kashmir', image: 'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=600&q=80' },
+  { name: 'Goa', slug: 'goa', image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&q=80' },
+  { name: 'Meghalaya Assam', slug: 'meghalaya-assam', image: 'https://images.unsplash.com/photo-1579761922573-04bcf7f1e72f?w=600&q=80' },
+  { name: 'Ladakh', slug: 'ladakh', image: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80' },
+  { name: 'Bali', slug: 'bali', image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80' },
+  { name: 'Vietnam', slug: 'vietnam', image: 'https://images.unsplash.com/photo-1528127269322-539801943592?w=600&q=80' },
+  { name: 'Bhutan', slug: 'bhutan', image: 'https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?w=600&q=80' },
+  { name: 'Nepal', slug: 'nepal', image: 'https://images.unsplash.com/photo-1581793746485-04698e79a4e8?w=600&q=80' }
 ];
 
 export default function PreviewCards() {
@@ -26,7 +26,7 @@ export default function PreviewCards() {
       
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {premiumDestinations.map((dest, i) => (
-          <Link href={`/packages?q=${dest.name}`} key={dest.name}>
+          <Link href={`/destinations/${dest.slug}`} key={dest.name}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -35,7 +35,7 @@ export default function PreviewCards() {
               className="group relative h-[250px] md:h-[300px] rounded-[24px] overflow-hidden shadow-sm hover:shadow-[0_20px_40px_-12px_rgba(30,77,139,0.2)] transition-shadow duration-300"
             >
               <SafeImage 
-                src={resolveImage('destination', dest.name, dest.img)} 
+                src={getDestinationImage(dest)} 
                 alt={dest.name} 
                 fill 
                 sizes="(max-width: 768px) 50vw, 25vw"

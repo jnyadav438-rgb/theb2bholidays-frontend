@@ -4,7 +4,7 @@ import SafeImage from '@/components/SafeImage';
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Flame } from 'lucide-react';
-import { resolveImage } from '@/lib/imageResolver';
+import { getDestinationImage } from '@/lib/imageResolver';
 
 interface DestProps {
   slug: string;
@@ -36,7 +36,7 @@ export default function PremiumDestCard({ dest, index, featured = false }: { des
       >
         <motion.div style={{ y: yParallax }} className="absolute inset-[-15%] w-[130%] h-[130%]">
           <SafeImage 
-            src={resolveImage('destination', dest.slug || dest.name, dest.image)} 
+            src={getDestinationImage(dest)} 
             alt={dest.name} 
             fill 
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

@@ -15,9 +15,9 @@ import PopularDestinations from '@/components/PopularDestinations/PopularDestina
 import HolidayPackages from '@/components/HolidayPackages/HolidayPackages';
 
 const testimonials = [
-  { name: 'Rahul Mehta', agency: 'Wanderlust Tours', text: 'THE B2B HOLIDAYS transformed our margins. Instant vouchers and the best trade rates in the market.', dest: 'Maldives', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150' },
-  { name: 'Priya Sharma', agency: 'Blue Sky Travels', text: 'The wallet and credit system makes bookings effortless. My clients love the curated packages.', dest: 'Dubai', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150' },
-  { name: 'Arjun Nair', agency: 'Coastal Holidays', text: 'Support is phenomenal and the admin panel gives me full control over every booking.', dest: 'Switzerland', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150' },
+  { name: 'Rahul Mehta', agency: 'Wanderlust Tours', text: 'THE B2B HOLIDAYS transformed our margins. Instant vouchers and the best trade rates in the market.', dest: 'Vietnam', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150' },
+  { name: 'Priya Sharma', agency: 'Blue Sky Travels', text: 'The wallet and credit system makes bookings effortless. My clients love the curated packages.', dest: 'Bhutan', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150' },
+  { name: 'Arjun Nair', agency: 'Coastal Holidays', text: 'Support is phenomenal and the admin panel gives me full control over every booking.', dest: 'Nepal', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150' },
   { name: 'Sneha Patel', agency: 'Dream Getaways', text: 'The curated packages are incredibly competitive. Highly recommended for agents.', dest: 'Bali', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150' }
 ];
 

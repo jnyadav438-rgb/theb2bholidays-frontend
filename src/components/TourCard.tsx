@@ -4,7 +4,7 @@ import Link from 'next/link';
 import SafeImage from '@/components/SafeImage';
 import { useRouter } from 'next/navigation';
 import { Star, Clock, Hotel, Utensils, Plane, Heart, Share2, ShieldAlert } from 'lucide-react';
-import { resolveImage } from '@/lib/imageResolver';
+import { getPackageImage } from '@/lib/imageResolver';
 
 export default function TourCard({ pkg }: { pkg: any }) {
   const router = useRouter();
@@ -17,7 +17,7 @@ export default function TourCard({ pkg }: { pkg: any }) {
       
       {/* IMAGE SECTION */}
       <div className="relative h-[220px] md:h-[240px] shrink-0 overflow-hidden rounded-t-[24px]">
-        <SafeImage src={resolveImage('package', pkg.slug || pkg.title, pkg.thumbnail || pkg.coverImage || pkg.images?.[0])} alt={pkg.title} fill sizes="(max-width: 768px) 100vw, 400px" className="object-cover transition-transform duration-300 group-hover:scale-110" />
+        <SafeImage src={getPackageImage(pkg)} alt={pkg.title} fill sizes="(max-width: 768px) 100vw, 400px" className="object-cover transition-transform duration-300 group-hover:scale-110" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
         
         {/* Top Badges */}
