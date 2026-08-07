@@ -34,7 +34,7 @@ export default function Footer() {
           <h4 className="mb-4 font-semibold text-white">Get in touch</h4>
           <ul className="space-y-3 text-sm text-white/70">
             <li className="flex items-center gap-2"><Mail size={16} /> info@theb2bholidays.com</li>
-            <li className="flex items-center gap-2"><Phone size={16} /> +91 97165 51594</li>
+            <li className="flex items-center gap-2"><Phone size={16} /> +91 74283 00246, +91 74283 00248</li>
             <li className="flex items-start gap-2">
               <MapPin size={16} className="mt-0.5 shrink-0" />
               <a href="https://www.google.com/maps/place/The+Iconic+Corenthum/@28.6290602,77.3610363,15.68z/data=!4m15!1m8!3m7!1s0x390ce54e53e93a5f:0x98f7987d5778ab91!2s41,+Block+A,+Industrial+Area,+Sector+62,+Noida,+Uttar+Pradesh+201309!3b1!8m2!3d28.62901!4d77.3644551!16s%2Fg%2F11h4kcs9dw!3m5!1s0x390ce5447d350e9f:0x4beba507fa3f455b!8m2!3d28.6267113!4d77.3737679!16s%2Fg%2F11cls77vbf?entry=ttu&g_ep=EgoyMDI2MDgwNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
