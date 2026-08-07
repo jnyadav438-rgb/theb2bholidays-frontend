@@ -8,7 +8,7 @@ const DESTINATION_IMAGES: Record<string, string> = {
   focus: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80',
   ladakh: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80',
   rajasthan: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?w=800&q=80',
-  jaipur: 'https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?w=800&q=80',
+  jaipur: 'https://images.unsplash.com/photo-1578556881786-851d4b79cb73?w=800&q=80',
   udaipur: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80',
   agra: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=800&q=80',
   delhi: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800&q=80',
@@ -23,7 +23,7 @@ const DESTINATION_IMAGES: Record<string, string> = {
   bali: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80',
   maldives: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80',
   nepal: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=80',
-  bhutan: 'https://images.unsplash.com/photo-ZdwVvRdel8A?w=800&q=80',
+  bhutan: 'https://images.unsplash.com/photo-1638246438556-5d5042582f05?w=800&q=80',
   vietnam: 'https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80',
   japan: 'https://images.unsplash.com/photo-E_eWwM29wfU?w=800&q=80',
   switzerland: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=800&q=80',
@@ -139,7 +139,7 @@ const DESTINATION_GALLERIES: Record<string, string[]> = {
   manali: [
     'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80',
     'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80',
-    'https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?w=800&q=80',
+    'https://images.unsplash.com/photo-1578556881786-851d4b79cb73?w=800&q=80',
     'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80',
     'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80'
   ]
