@@ -7,7 +7,7 @@ import PackageCard from '@/components/PackageCard';
 import Filters from '@/components/Filters';
 import { SkeletonGrid } from '@/components/Skeletons';
 
-const emptyFilters = { q: '', country: '', state: '', type: '', theme: '', maxPrice: '', duration: '', month: '', hotelRating: '', mealPlan: '', flightIncluded: '', visaIncluded: '', fixedDeparture: '' };
+const emptyFilters = { q: '', country: '', state: '', type: '', theme: '', duration: '', month: '', hotelRating: '', mealPlan: '', flightIncluded: '', visaIncluded: '', fixedDeparture: '' };
 
 export default function CategoryPage() {
   const { slug } = useParams();

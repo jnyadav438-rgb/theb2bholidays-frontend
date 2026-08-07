@@ -32,7 +32,6 @@ export default function DestinationDetail() {
             <div className="mt-3 flex flex-wrap items-center gap-4 text-sm">
               <span className="flex items-center gap-1 rounded-full bg-white/15 px-3 py-1 backdrop-blur"><Star size={14} className="fill-accent text-accent" />{d.rating?.toFixed(1)} ({d.reviewCount})</span>
               <span className="rounded-full bg-secondary/90 px-3 py-1 font-semibold">{d.tourCount} tours available</span>
-              <span className="rounded-full bg-accent/90 px-3 py-1 font-semibold text-slate-900">from ₹{d.startingPrice?.toLocaleString('en-IN')}</span>
             </div>
           </motion.div>
         </div>

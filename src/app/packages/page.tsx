@@ -12,7 +12,6 @@ function PackagesInner() {
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
     q: sp.get('q') || '', type: sp.get('type') || '', theme: sp.get('theme') || '',
-    minPrice: sp.get('minPrice') || '', maxPrice: sp.get('maxPrice') || '',
     hotelRating: sp.get('hotelRating') || '', fixedDeparture: sp.get('fixedDeparture') || '',
     sort: sp.get('sort') || 'popularity', page: Number(sp.get('page') || 1)
   });
@@ -48,9 +47,6 @@ function PackagesInner() {
             <option value="">Any</option>
             {['luxury','family','honeymoon','adventure','corporate','pilgrimage','weekend','cruise'].map(t => <option key={t} value={t}>{t}</option>)}
           </select>
-
-          <label className="mb-1 block text-sm font-medium">Max Budget (₹)</label>
-          <input type="number" value={filters.maxPrice} onChange={e => upd('maxPrice', e.target.value)} placeholder="e.g. 50000" className="mb-4 w-full rounded-xl border px-3 py-2 text-sm" />
 
           <label className="mb-1 block text-sm font-medium">Min Hotel Rating</label>
           <select value={filters.hotelRating} onChange={e => upd('hotelRating', e.target.value)} className="mb-4 w-full rounded-xl border px-3 py-2 text-sm">
