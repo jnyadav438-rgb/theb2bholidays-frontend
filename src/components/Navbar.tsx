@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Menu, X, Plane, ChevronDown, Phone } from 'lucide-react';
+import { Menu, X, Plane, ChevronDown, Phone, Mail, MapPin } from 'lucide-react';
 import { useAuth } from '@/lib/auth';
 
 const links = [
@@ -41,20 +41,25 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700">
-          {links.slice(0, 3).map(l => (
+          {links.map(l => (
             <Link key={l.label} href={l.href} className={`transition font-semibold ${isActive(l.href) ? 'text-primary border-b-2 border-primary py-4' : 'hover:text-primary py-4 border-b-2 border-transparent'}`}>{l.label}</Link>
           ))}
 
           <div className="relative group py-4 -my-4">
             <button className="flex items-center gap-1 hover:text-primary transition font-semibold">
-              More <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />
+              Info <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />
             </button>
-            <div className="absolute top-full left-0 mt-1 w-56 bg-white border border-slate-100 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 flex flex-col overflow-hidden z-50">
-              {links.slice(3).map(l => (
-                <Link key={l.label} href={l.href} className={`px-5 py-3 hover:bg-slate-50 transition text-sm ${isActive(l.href) ? 'text-primary font-bold bg-blue-50/50' : 'hover:text-primary text-slate-700'}`}>
-                  {l.label}
-                </Link>
-              ))}
+            <div className="absolute top-full right-0 mt-1 w-72 bg-white border border-slate-100 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 flex flex-col overflow-hidden z-50 p-2">
+              <a href="mailto:info@theb2bholidays.com" className="px-4 py-3 hover:bg-slate-50 transition text-sm text-slate-700 flex items-center gap-3 rounded-lg">
+                <Mail size={16} className="text-primary shrink-0" /> info@theb2bholidays.com
+              </a>
+              <a href="tel:+919716551594" className="px-4 py-3 hover:bg-slate-50 transition text-sm text-slate-700 flex items-center gap-3 rounded-lg">
+                <Phone size={16} className="text-primary shrink-0" /> +91 97165 51594
+              </a>
+              <a href="https://www.google.com/maps/place/The+Iconic+Corenthum/@28.6290602,77.3610363,15.68z/data=!4m15!1m8!3m7!1s0x390ce54e53e93a5f:0x98f7987d5778ab91!2s41,+Block+A,+Industrial+Area,+Sector+62,+Noida,+Uttar+Pradesh+201309!3b1!8m2!3d28.62901!4d77.3644551!16s%2Fg%2F11h4kcs9dw!3m5!1s0x390ce5447d350e9f:0x4beba507fa3f455b!8m2!3d28.6267113!4d77.3737679!16s%2Fg%2F11cls77vbf?entry=ttu&g_ep=EgoyMDI2MDgwNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="px-4 py-3 hover:bg-slate-50 transition text-sm text-slate-700 flex items-start gap-3 rounded-lg leading-relaxed">
+                <MapPin size={16} className="text-primary shrink-0 mt-0.5" /> 
+                <span>The Corenthum Iconic Tower C, 5th Floor, C 23, Near noida Electronic City metro Noida 62 201301</span>
+              </a>
             </div>
           </div>
         </div>
