@@ -40,7 +40,7 @@ export default function MasonryPackageCard({ pkg, index }: { pkg: PackageProps; 
       >
         {/* Background Image */}
         <SafeImage 
-          src={resolveImage('package', pkg.slug || pkg.title, pkg.images?.[0])} 
+          src={resolveImage('package', pkg.slug || pkg.title, pkg.thumbnail || pkg.coverImage || pkg.images?.[0])} 
           alt={pkg.title}  
           fill 
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
