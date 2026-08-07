@@ -8,6 +8,8 @@ import { resolveImage } from '@/lib/imageResolver';
 interface PackageProps {
   slug: string;
   images?: string[];
+  thumbnail?: string;
+  coverImage?: string;
   title: string;
   country?: string;
   city?: string;
