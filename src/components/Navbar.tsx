@@ -10,8 +10,6 @@ const links = [
   { label: 'Destinations', href: '/destinations' },
   { label: 'Packages', href: '/packages' },
   { label: 'Blogs', href: '/blogs' },
-  { label: 'About Us', href: '/about' },
-  { label: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {
