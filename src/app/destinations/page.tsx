@@ -4,6 +4,24 @@ import { api } from '@/lib/api';
 import DestinationCard from '@/components/DestinationCard';
 import { SkeletonGrid } from '@/components/Skeletons';
 
+// Sort: Bali & Vietnam first, then international, then domestic
+function prioritySort(items: any[]) {
+  const pinned = ['bali', 'vietnam'];
+  return [...items].sort((a, b) => {
+    const aName = (a.name || a.country || '').toLowerCase();
+    const bName = (b.name || b.country || '').toLowerCase();
+    const aPin = pinned.findIndex(p => aName.includes(p));
+    const bPin = pinned.findIndex(p => bName.includes(p));
+    if (aPin !== -1 && bPin !== -1) return aPin - bPin;
+    if (aPin !== -1) return -1;
+    if (bPin !== -1) return 1;
+    const aIntl = a.type === 'international' ? 0 : 1;
+    const bIntl = b.type === 'international' ? 0 : 1;
+    if (aIntl !== bIntl) return aIntl - bIntl;
+    return 0;
+  });
+}
+
 export default function Destinations() {
   const [items, setItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -13,7 +31,7 @@ export default function Destinations() {
   useEffect(() => {
     setLoading(true);
     const p = new URLSearchParams(); if (type) p.set('type', type); p.set('sort', sort); p.set('limit', '24');
-    api.get(`/destinations?${p.toString()}`).then(r => setItems(r.data.items)).finally(() => setLoading(false));
+    api.get(`/destinations?${p.toString()}`).then(r => setItems(prioritySort(r.data.items))).finally(() => setLoading(false));
   }, [type, sort]);
 
   return (
