@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Plane, Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
@@ -6,9 +7,8 @@ export default function Footer() {
     <footer className="mt-20 bg-primary-dark text-white/90">
       <div className="container-x grid gap-10 py-14 md:grid-cols-4">
         <div>
-          <div className="flex items-center gap-2 text-xl font-extrabold text-white">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-secondary"><Plane size={18} /></span>
-            THE B2B HOLIDAYS
+          <div className="flex items-center gap-2 mb-4">
+            <Image src="/logo.png" alt="The B2B Holidays" width={250} height={80} className="h-12 w-auto brightness-0 invert" />
           </div>
           <p className="mt-4 text-sm text-white/70">India&apos;s premium B2B travel booking platform for agents and partners. Curated holidays, instant vouchers and unbeatable trade rates.</p>
         </div>

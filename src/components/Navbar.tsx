@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Menu, X, Plane, ChevronDown, Phone, Mail, MapPin } from 'lucide-react';
@@ -33,9 +34,8 @@ export default function Navbar() {
   return (
     <header className={`sticky top-0 z-50 transition-all ${scrolled ? 'glass shadow-premium' : 'bg-white'}`}>
       <nav className="container-x flex items-center justify-between py-3">
-        <Link href="/" className="flex items-center gap-2 font-extrabold text-primary text-xl">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-primary text-white"><Plane size={18} /></span>
-          THE B2B <span className="text-secondary">HOLIDAYS</span>
+        <Link href="/" className="flex items-center">
+          <Image src="/logo.png" alt="The B2B Holidays" width={250} height={80} className="h-14 w-auto" priority />
         </Link>
 
         <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700">
@@ -72,6 +72,7 @@ export default function Navbar() {
           </a>
           {user && (
             <>
+
               {user.role === 'admin' && (
                 <Link href="/admin" className="btn-outline py-2 px-4 text-sm">Admin Panel</Link>
               )}
