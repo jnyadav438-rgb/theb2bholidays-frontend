@@ -18,7 +18,7 @@ export const heroData = [
     location: "Bhutan",
     title: "Journey to the Last Shangri-La",
     subtitle: "Discover majestic fortresses, serene monasteries, and the breathtaking beauty of the Himalayas.",
-    image: "https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?q=80&w=2000&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1578556881786-851d4b79cb73?q=80&w=2000&auto=format&fit=crop"
   },
   {
     id: 4,
