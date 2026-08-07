@@ -7,8 +7,8 @@ export default function Footer() {
     <footer className="mt-20 bg-primary-dark text-white/90">
       <div className="container-x grid gap-10 py-14 md:grid-cols-4">
         <div>
-          <div className="flex items-center gap-2 mb-4">
-            <Image src="/logo.png" alt="The B2B Holidays" width={250} height={80} className="h-12 w-auto brightness-0 invert" />
+          <div className="flex items-center gap-2 mb-4 -ml-2 -mt-2">
+            <Image src="/logo.png" alt="The B2B Holidays" width={300} height={100} className="h-16 md:h-24 w-auto brightness-0 invert scale-110 md:scale-125 origin-left" />
           </div>
           <p className="mt-4 text-sm text-white/70">India&apos;s premium B2B travel booking platform for agents and partners. Curated holidays, instant vouchers and unbeatable trade rates.</p>
         </div>

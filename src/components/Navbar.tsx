@@ -33,9 +33,9 @@ export default function Navbar() {
 
   return (
     <header className={`sticky top-0 z-50 transition-all ${scrolled ? 'glass shadow-premium' : 'bg-white'}`}>
-      <nav className="container-x flex items-center justify-between py-3">
-        <Link href="/" className="flex items-center">
-          <Image src="/logo.png" alt="The B2B Holidays" width={300} height={100} className="h-16 md:h-24 w-auto" priority />
+      <nav className="container-x flex items-center justify-between">
+        <Link href="/" className="flex items-center -ml-2">
+          <Image src="/logo.png" alt="The B2B Holidays" width={300} height={100} className="h-16 md:h-24 w-auto scale-110 md:scale-125 origin-left" priority />
         </Link>
 
         <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700">
