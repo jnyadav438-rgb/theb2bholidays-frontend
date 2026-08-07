@@ -12,7 +12,8 @@ const links = [
   { label: 'Fixed Departure', href: '/packages?fixedDeparture=true' },
   { label: 'Group Tours', href: '/packages?theme=corporate' },
   { label: 'Blogs', href: '/blogs' },
-  { label: 'Admin Login', href: '/login' }
+  { label: 'About Us', href: '/about' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {

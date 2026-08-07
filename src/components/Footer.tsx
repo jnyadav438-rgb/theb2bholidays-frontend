@@ -18,14 +18,17 @@ export default function Footer() {
             <li><Link href="/about">About Us</Link></li>
             <li><Link href="/contact">Contact</Link></li>
             <li><Link href="/blogs">Blogs</Link></li>
+            <li><Link href="/enquiry">Send Enquiry</Link></li>
           </ul>
         </div>
         <div>
           <h4 className="mb-4 font-semibold text-white">Explore</h4>
           <ul className="space-y-2 text-sm text-white/70">
-            <li><Link href="/packages">Packages</Link></li>
             <li><Link href="/destinations">Destinations</Link></li>
+            <li><Link href="/packages">Holiday Packages</Link></li>
             <li><Link href="/packages?fixedDeparture=true">Fixed Departures</Link></li>
+            <li><Link href="/packages?theme=honeymoon">Honeymoon Packages</Link></li>
+            <li><Link href="/packages?theme=adventure">Adventure Tours</Link></li>
           </ul>
         </div>
         <div>

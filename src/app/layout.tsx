@@ -13,11 +13,52 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://theb2bholidays.com'),
-  title: { default: 'THE B2B HOLIDAYS — Premium B2B Travel Booking Platform', template: '%s | THE B2B HOLIDAYS' },
-  description: 'India\'s premium B2B travel booking platform. Curated holidays and fixed departures for travel agents and partners.',
-  keywords: ['B2B travel', 'travel agents', 'holiday packages', 'fixed departures', 'travel portal'],
-  openGraph: { title: 'THE B2B HOLIDAYS', description: 'Premium B2B travel booking platform', type: 'website' },
-  twitter: { card: 'summary_large_image' }
+  title: {
+    default: 'The B2B Holidays | B2B Travel & Holiday Packages for Travel Agents',
+    template: '%s | The B2B Holidays',
+  },
+  description:
+    'The B2B Holidays is India\'s premium B2B travel platform providing holiday packages, hotel bookings, fixed departures, and curated travel services exclusively for travel agents and partners.',
+  keywords: [
+    'B2B travel platform',
+    'travel agent portal',
+    'B2B holiday packages',
+    'fixed departure tours',
+    'hotel booking for agents',
+    'domestic holiday packages',
+    'international tour packages',
+    'group tour packages India',
+    'travel trade rates',
+    'B2B travel India',
+  ],
+  openGraph: {
+    title: 'The B2B Holidays | B2B Travel & Holiday Packages',
+    description:
+      'India\'s premium B2B travel platform. Curated holidays, hotel bookings, and fixed departures for travel agents.',
+    type: 'website',
+    siteName: 'The B2B Holidays',
+    locale: 'en_IN',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'The B2B Holidays | B2B Travel & Holiday Packages',
+    description:
+      'Curated holidays, hotel bookings, and fixed departures for travel agents. Join 12,000+ partners.',
+  },
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

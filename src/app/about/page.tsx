@@ -1,5 +1,13 @@
 import { ShieldCheck, Globe2, Users, Award } from 'lucide-react';
-export const metadata = { title: 'About Us' };
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About Us — India\'s Premium B2B Travel Platform',
+  description:
+    'Learn about The B2B Holidays — India\'s trusted B2B travel platform with 12,000+ partners, 60+ destinations, and 850+ curated holiday packages for travel agents.',
+  keywords: ['about B2B Holidays', 'B2B travel company India', 'travel agent platform', 'travel partner network'],
+  alternates: { canonical: '/about' },
+};
 export default function About() {
   return (
     <div className="container-x py-14">
