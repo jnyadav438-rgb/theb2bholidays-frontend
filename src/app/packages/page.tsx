@@ -57,10 +57,6 @@ function PackagesInner() {
             <option value="">Any</option><option value="3">3★+</option><option value="4">4★+</option><option value="5">5★</option>
           </select>
 
-          <label className="flex items-center gap-2 text-sm">
-            <input type="checkbox" checked={filters.fixedDeparture === 'true'} onChange={e => upd('fixedDeparture', e.target.checked ? 'true' : '')} />
-            Fixed Departures only
-          </label>
         </aside>
 
         {/* Results */}

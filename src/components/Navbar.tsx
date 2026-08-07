@@ -9,8 +9,6 @@ const links = [
   { label: 'Home', href: '/' },
   { label: 'Destinations', href: '/destinations' },
   { label: 'Packages', href: '/packages' },
-  { label: 'Fixed Departure', href: '/packages?fixedDeparture=true' },
-  { label: 'Group Tours', href: '/packages?theme=corporate' },
   { label: 'Blogs', href: '/blogs' },
   { label: 'About Us', href: '/about' },
   { label: 'Contact', href: '/contact' },

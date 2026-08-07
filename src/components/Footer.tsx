@@ -26,7 +26,6 @@ export default function Footer() {
           <ul className="space-y-2 text-sm text-white/70">
             <li><Link href="/destinations">Destinations</Link></li>
             <li><Link href="/packages">Holiday Packages</Link></li>
-            <li><Link href="/packages?fixedDeparture=true">Fixed Departures</Link></li>
             <li><Link href="/packages?theme=honeymoon">Honeymoon Packages</Link></li>
             <li><Link href="/packages?theme=adventure">Adventure Tours</Link></li>
           </ul>

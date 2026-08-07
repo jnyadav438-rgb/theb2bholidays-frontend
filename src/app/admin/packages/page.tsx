@@ -227,7 +227,6 @@ export default function AdminPackages() {
                   {[
                     ['flightIncluded', 'Flights Included'],
                     ['visaIncluded', 'Visa Included'],
-                    ['fixedDeparture', 'Fixed Departure'],
                     ['bestSelling', 'Best Seller'],
                     ['trending', 'Trending'],
                     ['featured', 'Featured'],

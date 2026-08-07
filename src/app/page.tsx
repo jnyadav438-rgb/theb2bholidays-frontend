@@ -18,7 +18,7 @@ const testimonials = [
   { name: 'Rahul Mehta', agency: 'Wanderlust Tours', text: 'THE B2B HOLIDAYS transformed our margins. Instant vouchers and the best trade rates in the market.', dest: 'Maldives', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150' },
   { name: 'Priya Sharma', agency: 'Blue Sky Travels', text: 'The wallet and credit system makes bookings effortless. My clients love the curated packages.', dest: 'Dubai', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150' },
   { name: 'Arjun Nair', agency: 'Coastal Holidays', text: 'Support is phenomenal and the admin panel gives me full control over every booking.', dest: 'Switzerland', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150' },
-  { name: 'Sneha Patel', agency: 'Dream Getaways', text: 'The fixed departure deals are incredibly competitive. Highly recommended for agents.', dest: 'Bali', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150' }
+  { name: 'Sneha Patel', agency: 'Dream Getaways', text: 'The curated packages are incredibly competitive. Highly recommended for agents.', dest: 'Bali', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150' }
 ];
 
 export default function Home() {
@@ -26,7 +26,6 @@ export default function Home() {
   const [bestSellers, setBestSellers] = useState<any[]>([]);
   const [categories, setCategories] = useState<any[]>([]);
   const [trending, setTrending] = useState<any[]>([]);
-  const [fixedDeps, setFixedDeps] = useState<any[]>([]);
   const [blogs, setBlogs] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
@@ -37,7 +36,6 @@ export default function Home() {
       setBestSellers(r.data.bestSellers || []);
       setCategories(r.data.categories || []);
       setTrending(r.data.trending || []);
-      setFixedDeps(r.data.fixedDeps || []);
       setBlogs(r.data.blogs || []);
     }).catch(() => {}).finally(() => setLoading(false));
   }, []);
@@ -195,7 +193,7 @@ export default function Home() {
               <Mail className="text-white" size={32} />
             </div>
             <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-sm">Exclusive Deals In Your Inbox</h2>
-            <p className="text-lg text-white/80 mb-10 max-w-xl">Subscribe to our agent newsletter for the latest B2B rates, fixed departures, and new destinations before anyone else.</p>
+            <p className="text-lg text-white/80 mb-10 max-w-xl">Subscribe to our agent newsletter for the latest B2B rates, new destinations, and exclusive deals before anyone else.</p>
             <form className="flex flex-col sm:flex-row gap-4 max-w-xl" onSubmit={(e) => e.preventDefault()}>
               <input type="email" placeholder="Enter your email address" className="flex-1 px-6 py-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-accent transition-all" required />
               <button type="submit" className="px-8 py-4 bg-accent hover:bg-accent/90 text-primary font-extrabold rounded-full transition-all flex items-center justify-center gap-2 hover:scale-105 hover:shadow-lg">

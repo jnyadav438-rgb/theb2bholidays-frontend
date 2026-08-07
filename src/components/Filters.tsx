@@ -25,7 +25,7 @@ export default function Filters({ filters, onChange, onReset }: { filters: any; 
       <F label="Meal Plan"><select value={filters.mealPlan} onChange={e => onChange('mealPlan', e.target.value)} className={inputCls}><option value="">Any</option><option value="Breakfast">Breakfast</option><option value="Dinner">Breakfast + Dinner</option><option value="All">All Meals / Inclusive</option></select></F>
       <label className="mb-2 flex items-center gap-2 text-sm"><input type="checkbox" checked={filters.flightIncluded === 'true'} onChange={e => onChange('flightIncluded', e.target.checked ? 'true' : '')} /> Flights Included</label>
       <label className="mb-2 flex items-center gap-2 text-sm"><input type="checkbox" checked={filters.visaIncluded === 'true'} onChange={e => onChange('visaIncluded', e.target.checked ? 'true' : '')} /> Visa Included</label>
-      <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={filters.fixedDeparture === 'true'} onChange={e => onChange('fixedDeparture', e.target.checked ? 'true' : '')} /> Fixed Departures</label>
+
     </aside>
   );
 }
