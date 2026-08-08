@@ -33,6 +33,26 @@ export default function Navbar() {
 
   return (
     <header className={`sticky top-0 z-50 transition-all ${scrolled ? 'glass shadow-premium' : 'bg-white'}`}>
+      {/* TOP BAR */}
+      <div className="hidden md:block bg-slate-900 text-slate-300 py-2 border-b border-white/10">
+        <div className="container-x flex items-center justify-between text-[13px] font-medium">
+          <div className="flex items-center gap-6">
+            <a href="mailto:info@theb2bholidays.com" className="flex items-center gap-2 hover:text-white transition">
+              <Mail size={14} className="text-primary" /> info@theb2bholidays.com
+            </a>
+            <a href="tel:+917428300246" className="flex items-center gap-2 hover:text-white transition">
+              <Phone size={14} className="text-primary" /> +91 74283 00246
+            </a>
+            <a href="tel:+917428300248" className="flex items-center gap-2 hover:text-white transition">
+              <Phone size={14} className="text-primary" /> +91 74283 00248
+            </a>
+          </div>
+          <div className="flex items-center gap-4">
+            {/* Can add social icons or other links here if needed in the future */}
+          </div>
+        </div>
+      </div>
+
       <nav className="container-x flex items-center justify-between">
         <Link href="/" className="flex items-center -ml-2">
           <Image src="/logo.png" alt="The B2B Holidays" width={300} height={100} className="h-16 md:h-24 w-auto scale-110 md:scale-125 origin-left" priority />
@@ -66,10 +86,6 @@ export default function Navbar() {
           {!user || user.role !== 'admin' ? (
             <Link href="/enquiry" className="btn-primary py-2 px-5 text-sm rounded-xl font-bold shadow-sm hover:shadow-md transition-all">Send Enquiry</Link>
           ) : null}
-          <a href="tel:+917428300246" className="flex items-center gap-1.5 text-sm font-extrabold text-slate-700 hover:text-primary transition">
-            <span className="grid h-7 w-7 place-items-center rounded-full bg-slate-100 text-primary"><Phone size={14} /></span>
-            +91 74283 00246
-          </a>
           {user && (
             <>
 
