@@ -57,7 +57,7 @@ export default function Navbar() {
           </div>
 
           {/* MAIN NAV */}
-          <nav className="flex items-center justify-end md:justify-between py-2">
+          <nav className="flex items-center justify-end md:justify-end md:gap-12 py-2">
             <div className="hidden md:flex items-center gap-10 text-sm font-medium text-slate-700">
           {links.map(l => (
             <Link key={l.label} href={l.href} className={`transition font-semibold ${isActive(l.href) ? 'text-primary border-b-2 border-primary py-4' : 'hover:text-primary py-4 border-b-2 border-transparent'}`}>{l.label}</Link>
