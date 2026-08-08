@@ -100,7 +100,32 @@ export default function Navbar() {
           )}
         </div>
 
-        <button className="md:hidden" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
+        <div className="md:hidden flex items-center gap-5">
+          <div className="relative group" tabIndex={0}>
+            <Mail size={22} className="text-slate-700 hover:text-primary cursor-pointer" />
+            <div className="absolute right-0 top-full mt-2 w-60 bg-white border border-slate-100 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] opacity-0 invisible group-focus-within:opacity-100 group-focus-within:visible transition-all z-50 p-2">
+              <a href="mailto:info@theb2bholidays.com" className="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition rounded-lg">
+                <Mail size={16} className="text-primary shrink-0" /> info@theb2bholidays.com
+              </a>
+            </div>
+          </div>
+
+          <div className="relative group" tabIndex={0}>
+            <Phone size={22} className="text-slate-700 hover:text-primary cursor-pointer" />
+            <div className="absolute right-0 top-full mt-2 w-52 bg-white border border-slate-100 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] opacity-0 invisible group-focus-within:opacity-100 group-focus-within:visible transition-all z-50 p-2">
+              <a href="tel:+917428300246" className="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition rounded-lg">
+                <Phone size={16} className="text-primary shrink-0" /> +91 74283 00246
+              </a>
+              <a href="tel:+917428300248" className="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition rounded-lg">
+                <Phone size={16} className="text-primary shrink-0" /> +91 74283 00248
+              </a>
+            </div>
+          </div>
+
+          <button className="text-slate-700 hover:text-primary transition ml-1" onClick={() => setOpen(!open)}>
+            {open ? <X size={26} /> : <Menu size={26} />}
+          </button>
+        </div>
           </nav>
         </div>
       </div>
