@@ -9,7 +9,7 @@ const config: Config = {
         accent: { DEFAULT: '#F4B400' }
       },
       borderRadius: { xl: '1rem', '2xl': '1.25rem' },
-      fontFamily: { sans: ['var(--font-inter)', 'system-ui', 'sans-serif'] },
+      fontFamily: { sans: ['var(--font-montserrat)', 'system-ui', 'sans-serif'] },
       boxShadow: { premium: '0 10px 40px -12px rgba(30,77,139,0.25)' },
       keyframes: {
         kenburns: {

@@ -33,10 +33,18 @@ export default function Navbar() {
 
   return (
     <header className={`sticky top-0 z-50 transition-all ${scrolled ? 'glass shadow-premium' : 'bg-white'}`}>
-      {/* TOP BAR */}
-      <div className="hidden md:block bg-transparent text-slate-600 py-2 border-b border-slate-100 dark:border-slate-800">
-        <div className="container-x flex items-center justify-end text-[13px] font-medium">
-          <div className="flex items-center gap-6">
+      <div className="container-x flex items-center justify-between md:items-stretch">
+        
+        {/* LOGO - Shared Left Side */}
+        <Link href="/" className="flex items-center shrink-0 mr-4 md:mr-10 -ml-2">
+          <Image src="/logo.png" alt="The B2B Holidays" width={300} height={100} className="h-16 md:h-24 w-auto scale-110 md:scale-125 origin-left" priority />
+        </Link>
+
+        {/* RIGHT COLUMN - Top Bar & Main Nav */}
+        <div className="flex-1 flex flex-col justify-center">
+          
+          {/* TOP BAR (Hidden on Mobile) */}
+          <div className="hidden md:flex items-center justify-end text-[13px] font-medium py-2 border-b border-slate-100 dark:border-slate-800 text-slate-600 gap-6">
             <a href="mailto:info@theb2bholidays.com" className="flex items-center gap-2 hover:text-primary transition">
               <Mail size={14} className="text-primary" /> info@theb2bholidays.com
             </a>
@@ -47,15 +55,10 @@ export default function Navbar() {
               <Phone size={14} className="text-primary" /> +91 74283 00248
             </a>
           </div>
-        </div>
-      </div>
 
-      <nav className="container-x flex items-center justify-between">
-        <Link href="/" className="flex items-center -ml-2">
-          <Image src="/logo.png" alt="The B2B Holidays" width={300} height={100} className="h-16 md:h-24 w-auto scale-110 md:scale-125 origin-left" priority />
-        </Link>
-
-        <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700">
+          {/* MAIN NAV */}
+          <nav className="flex items-center justify-end md:justify-between py-2">
+            <div className="hidden md:flex items-center gap-10 text-sm font-medium text-slate-700">
           {links.map(l => (
             <Link key={l.label} href={l.href} className={`transition font-semibold ${isActive(l.href) ? 'text-primary border-b-2 border-primary py-4' : 'hover:text-primary py-4 border-b-2 border-transparent'}`}>{l.label}</Link>
           ))}
@@ -95,7 +98,9 @@ export default function Navbar() {
         </div>
 
         <button className="md:hidden" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
-      </nav>
+          </nav>
+        </div>
+      </div>
 
       {open && (
         <div className="md:hidden border-t bg-white px-4 py-3 space-y-2">
