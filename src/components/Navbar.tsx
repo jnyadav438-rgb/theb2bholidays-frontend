@@ -36,7 +36,7 @@ export default function Navbar() {
       <div className="container-x flex items-center justify-between md:items-stretch">
         
         {/* LOGO - Shared Left Side */}
-        <Link href="/" className="flex items-center shrink-0 mr-4 md:mr-10 -ml-2">
+        <Link href="/" className="flex items-center shrink-0 mr-6 md:mr-24 -ml-2">
           <Image src="/logo.png" alt="The B2B Holidays" width={300} height={100} className="h-16 md:h-24 w-auto scale-110 md:scale-125 origin-left" priority />
         </Link>
 
@@ -44,7 +44,7 @@ export default function Navbar() {
         <div className="flex-1 flex flex-col justify-center">
           
           {/* TOP BAR (Hidden on Mobile) */}
-          <div className="hidden md:flex items-center justify-end text-[13px] font-medium py-2 border-b border-slate-100 dark:border-slate-800 text-slate-600 gap-6">
+          <div className="hidden md:flex items-center justify-end text-[13px] font-medium py-2 border-b border-white text-slate-600 gap-6">
             <a href="mailto:info@theb2bholidays.com" className="flex items-center gap-2 hover:text-primary transition">
               <Mail size={14} className="text-primary" /> info@theb2bholidays.com
             </a>
