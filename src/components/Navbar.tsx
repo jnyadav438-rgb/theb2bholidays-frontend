@@ -74,6 +74,9 @@ export default function Navbar() {
               <a href="tel:+917428300246" className="px-4 py-3 hover:bg-slate-50 transition text-sm text-slate-700 flex items-center gap-3 rounded-lg">
                 <Phone size={16} className="text-primary shrink-0" /> +91 74283 00246
               </a>
+              <a href="tel:+917428300248" className="px-4 py-3 hover:bg-slate-50 transition text-sm text-slate-700 flex items-center gap-3 rounded-lg">
+                <Phone size={16} className="text-primary shrink-0" /> +91 74283 00248
+              </a>
               <a href="https://www.google.com/maps/place/The+Iconic+Corenthum/@28.6290602,77.3610363,15.68z/data=!4m15!1m8!3m7!1s0x390ce54e53e93a5f:0x98f7987d5778ab91!2s41,+Block+A,+Industrial+Area,+Sector+62,+Noida,+Uttar+Pradesh+201309!3b1!8m2!3d28.62901!4d77.3644551!16s%2Fg%2F11h4kcs9dw!3m5!1s0x390ce5447d350e9f:0x4beba507fa3f455b!8m2!3d28.6267113!4d77.3737679!16s%2Fg%2F11cls77vbf?entry=ttu&g_ep=EgoyMDI2MDgwNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="px-4 py-3 hover:bg-slate-50 transition text-sm text-slate-700 flex items-start gap-3 rounded-lg leading-relaxed">
                 <MapPin size={16} className="text-primary shrink-0 mt-0.5" /> 
                 <span>The Corenthum Iconic Tower C, 5th Floor, C 23, Near Noida Electronic City Metro Station Gate No.3, Noida 62, 201301</span>
@@ -114,6 +117,9 @@ export default function Navbar() {
                 <p className="text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">Contact Info</p>
                 <a href="tel:+917428300246" className="flex items-center gap-3 py-1.5 text-sm font-semibold text-slate-700 hover:text-primary transition">
                   <Phone size={16} className="text-primary" /> +91 74283 00246
+                </a>
+                <a href="tel:+917428300248" className="flex items-center gap-3 py-1.5 text-sm font-semibold text-slate-700 hover:text-primary transition">
+                  <Phone size={16} className="text-primary" /> +91 74283 00248
                 </a>
                 <a href="mailto:info@theb2bholidays.com" className="flex items-center gap-3 py-1.5 text-sm font-semibold text-slate-700 hover:text-primary transition">
                   <Mail size={16} className="text-primary" /> info@theb2bholidays.com
