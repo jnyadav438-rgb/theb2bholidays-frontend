@@ -34,21 +34,18 @@ export default function Navbar() {
   return (
     <header className={`sticky top-0 z-50 transition-all ${scrolled ? 'glass shadow-premium' : 'bg-white'}`}>
       {/* TOP BAR */}
-      <div className="hidden md:block bg-slate-900 text-slate-300 py-2 border-b border-white/10">
-        <div className="container-x flex items-center justify-between text-[13px] font-medium">
+      <div className="hidden md:block bg-transparent text-slate-600 py-2 border-b border-slate-100 dark:border-slate-800">
+        <div className="container-x flex items-center justify-end text-[13px] font-medium">
           <div className="flex items-center gap-6">
-            <a href="mailto:info@theb2bholidays.com" className="flex items-center gap-2 hover:text-white transition">
+            <a href="mailto:info@theb2bholidays.com" className="flex items-center gap-2 hover:text-primary transition">
               <Mail size={14} className="text-primary" /> info@theb2bholidays.com
             </a>
-            <a href="tel:+917428300246" className="flex items-center gap-2 hover:text-white transition">
+            <a href="tel:+917428300246" className="flex items-center gap-2 hover:text-primary transition">
               <Phone size={14} className="text-primary" /> +91 74283 00246
             </a>
-            <a href="tel:+917428300248" className="flex items-center gap-2 hover:text-white transition">
+            <a href="tel:+917428300248" className="flex items-center gap-2 hover:text-primary transition">
               <Phone size={14} className="text-primary" /> +91 74283 00248
             </a>
-          </div>
-          <div className="flex items-center gap-4">
-            {/* Can add social icons or other links here if needed in the future */}
           </div>
         </div>
       </div>
